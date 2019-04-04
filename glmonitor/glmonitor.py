@@ -113,7 +113,8 @@ def glmonitor(args=None):
             glmon[account[0]]['diff_amount'] = f'{diff:.2f}'
             last_changed = str(current_time)
             if diff != 0:
-                glmon[account[0]]['off_since'] = str(current_time)
+                glmon[account[0]]['off_since'] = last_changed
+                updated = True
             else:
                 glmon[account[0]]['off_since'] = 'NA'
 

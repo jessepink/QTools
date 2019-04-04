@@ -3,7 +3,7 @@
 # import configparser
 
 import configargparse
-import os
+import os, sys
 import logging
 from glmonitor.glmonitor import glmonitor
 from support.support import connect_quantum, update_config
@@ -30,8 +30,6 @@ logger.addHandler(c_handler)
 logger.addHandler(f_handler)
 logger.setLevel(logging.DEBUG)
 
-logger.warning('this is a test at the beginning')
-
 # def get_config(args):
 #     config = configparser.ConfigParser(allow_no_value=True)
 #
@@ -51,7 +49,14 @@ logger.warning('this is a test at the beginning')
 
 
 def main():
-    logger.info('this is a test')
+    if getattr(sys, 'frozen', False):
+        # The application is frozen
+        datadir = os.path.dirname(sys.executable)
+    else:
+        # The application is not frozen
+        # Change this bit to match where you store your data files:
+        datadir = os.path.dirname(os.path.abspath(__file__))
+
     parser = configargparse.ArgumentParser(default_config_files=['qtools.cfg'])
     parser.add_argument("-q", "--quiet", type=str, help="Suppress all output")
     parser.add_argument("-v", "--verbose", type=str, help="Additional information printed to screen")
@@ -61,7 +66,7 @@ def main():
     parser.add_argument("-p", "--smtppassword", type=str, help="SMTP (email) password", default='None')
     parser.add_argument("-s", "--smtpserver", type=str, help="SMTP (email) server (i.e. smtp.gmail.com)")
     parser.add_argument("-c", "--configfile", type=str, help="config file name (default: qtools.cfg)", default='qtools.cfg')
-    parser.add_argument("--configpath", type=str, help="Part to configuration file (default: script location)", default=os.path.dirname(os.path.abspath(__file__)))
+    parser.add_argument("--configpath", type=str, help="Part to configuration file (default: script location)", default=datadir)
     parser.add_argument("--smtpport", type=int, help="SMTP (email) server port, default is 25", default=25)
     parser.add_argument("--tls", help="If your mail server requires a TLS connection", action='store_true')
     parser.add_argument("--nologin", help="If your SMTP server does NOT require you to login to send emails", action='store_true')
@@ -86,7 +91,7 @@ def main():
     elif args.glmonitor:
         glmonitor(args)
     else:
-        print("nothing to do... exiting")
+        print("Use \"qtools -h\" to see all available commands. If using for the first time, try \"qtools --updateconfig\" to do initial configuration and then \"qtools --glmonitor\" to run the GL Monitor.")
 
 
 if __name__ == '__main__':
