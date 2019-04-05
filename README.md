@@ -1,4 +1,4 @@
-## Welcome to the QTools github site
+## Welcome to the QTools site
 
 Get the latest version (0.1.1) [HERE](https://github.com/jessepink/QTools/releases/latest)
 
