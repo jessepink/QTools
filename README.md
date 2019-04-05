@@ -1,5 +1,7 @@
 ## Welcome to the QTools github site
 
+Get the latest version (0.1.1) [HERE](https://github.com/jessepink/QTools/releases/latest)
+
 QTools will incorporate various tools written in Python 3.x to be helper applications for Component Control's Quantum Control software.
 
 At first, QTools only has one tool available, which I call the "GL Monitor."  It pulls the values of your Quantum Control inventory GL accounts and the value of the non-historical inventory that is in that account, compares them, and if different will display the difference on the screen and if configured correctly, will send an email out notifications of the discrepancy.  This is particularly powerful if set up as a scheduled task in Windows or Linux via cron because it will allow you to narrow down the timeframe in which you must search for the "bad" adjustments.  If you run the task every five minutes, you only have to looks through the GL or inventory transactions that occurred within the last 5 minutes.
