@@ -68,10 +68,10 @@ def main():
     parser.add_argument("--nologin", help="If your SMTP server does NOT require you to login to send emails", action='store_true')
     parser.add_argument("--silencealert", type=int, help="Length in minutes to silence notifications that don't contain new information (default: 180)", default=180)
     parser.add_argument("--qhost", type=str, help="Quantum server hostname")
-    parser.add_argument("--qport", type=int, help="Quantum server port (default: 1521)", default='1521')
+    parser.add_argument("--qport", type=str, help="Quantum server port (default: 1521)", default='1521')
     parser.add_argument('--qsid', type=str, help="Quantum server SID (default: CCTL)", default="CCTL")
-    parser.add_argument('--qdbuser', type=str, help="Quantum DB username")
-    parser.add_argument('--qdbpassword', type=str, help="Quantum DB password")
+    parser.add_argument('--qdbuser', type=str, help="Quantum DB username", default='None')
+    parser.add_argument('--qdbpassword', type=str, help="Quantum DB password", default='None' )
 
     parser.add_argument('--glmonitor', action='store_true', help="Run the GL Monitor")
     parser.add_argument('--updateconfig', action='store_true', help='Update config file only (qtools.cfg unless specified by -c flag)')

@@ -233,8 +233,8 @@ def update_config(emaildest=None, emailfrom=None, smtppassword=None, smtpserver=
         default = '1521'
     while True:
         get_input = input(f'Quantum server port (typically \'1521\') [{default}]: ')
-        if get_input.strip():
-                config['QUANTUM', 'qport'] = get_input
+        if get_input:
+                config['QUANTUM']['qport'] = get_input.strip()
         else:
             config['QUANTUM']['qport'] = str(default)
         try:
@@ -264,8 +264,8 @@ def update_config(emaildest=None, emailfrom=None, smtppassword=None, smtpserver=
     elif config.has_option('QUANTUM', 'qdbuser'):
         default = config.get('QUANTUM', 'qdbuser')
     else:
-        default = 'qctl'
-    get_input = input(f'Quantum database user (typically \'qctl\') [{default}]: ')
+        default = 'None'
+    get_input = input(f'Quantum database username [{default}]: ')
     if get_input.strip():
         config['QUANTUM']['qdbuser'] = get_input
     else:
@@ -276,8 +276,8 @@ def update_config(emaildest=None, emailfrom=None, smtppassword=None, smtpserver=
     elif config.has_option('QUANTUM', 'qdbpassword'):
         default = config.get('QUANTUM', 'qdbpassword')
     else:
-        default = 'QUANTUM'
-    get_input = input(f'Quantum server database password (typically \'QUANTUM\') [{default}]: ')
+        default = 'None'
+    get_input = input(f'Quantum server database password (If you don\'t want to store your password, type "None", and use command line arguments to issue password at runtime) [{default}]: ')
     if get_input.strip():
         config['QUANTUM']['qdbpassword'] = get_input
     else:
