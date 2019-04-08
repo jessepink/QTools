@@ -1,6 +1,6 @@
 ## Welcome to the QTools site
 
-Get the latest version (0.1.1) [HERE](https://github.com/jessepink/QTools/releases/latest)
+Get the latest version (0.1.2) [HERE](https://github.com/jessepink/QTools/releases/latest)
 
 QTools will incorporate various tools written in Python 3.x to be helper applications for Component Control's Quantum Control software.
 
